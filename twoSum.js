@@ -1,33 +1,16 @@
-// function twoSum(numbers, target) {
-//     for (let n = 0; n < numbers.length; n++) {
-//         for (let i = n+1; i < numbers.length; i++) {
-//             if (numbers[n] + numbers[i] == target) {
-//                 return [n, i];
-//             }
-//         }
-//     }
-// }
-// twoSum([1, 2, 3], 4)
-// function twoSum(numbers, target) {
-//     let result = numbers.map((val, i) => {
-//         for (let n = 0; n < numbers.length; n++) {
-//             if (val + numbers[n] == target && n != i) {
-//                 return [n, i];
-//             }
-//             return ;
-//         }
-//     });
-//     console.log(result.filter( element => {return element !== undefined;})[0]);
-// }
+// console.log(twoSum([2,7,11,15], 9));
+console.log(twoSum([3,3], 6));
 
-function twoSum(numbers, target) {
-    let result = numbers.map((val, i) => {
-        for (let n = 0; n < numbers.length; n++) {
-            if (val + numbers[n] == target && n != i) {
-                return [n, i];
-            }
-            return ;
-        }
-    });
-    console.log(result.filter( element => {return element !== undefined;})[0]);
+function twoSum (nums, target) {
+    const keyValuePairs = new Map()
+
+    for (let i = 0; i < nums.length; i++) {
+        keyValuePairs[target - nums[i]] = i
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        if (keyValuePairs[target - nums[i]]) {
+            return [keyValuePairs[target - nums[i]], keyValuePairs[nums[i]]]
+        }        
+    }
 }
