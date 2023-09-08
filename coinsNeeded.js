@@ -9,25 +9,28 @@ assert.assertEquals(coinsNeeded(75, coins2), 3, "75 is 50+20+5");
 assert.assertEquals(coinsNeeded(123, coins2), 5, "123 is 50+50+20+2+1");
 
 function coinsNeeded(amount, coinDenominations) {
-    coinDenominations.sort((a, b) => b-a)
-
     let noOfCoinsUsed = 0;
-    let total = 0;
 
-    while (total !== amount) {
-
-        for (let i = 0; i < coinDenominations.length; i++) {
-            const coin = coinDenominations[i];
-
-            if (coin <= amount-total) {
-                total += coin;
-                noOfCoinsUsed++;
-                break;
-            }
-
-        }
-
+    for (let index = 0; amount !== 0; index++) {
+        let flooredValue = Math.floor(amount/coinDenominations[index])
+        noOfCoinsUsed += flooredValue
+        amount = amount % coinDenominations[index]
     }
+
+    // while (total !== amount) {
+
+    //     for (let i = 0; i < coinDenominations.length; i++) {
+    //         const coin = coinDenominati  ons[i];
+
+    //         if (coin <= amount-total) {
+    //             total += coin;
+    //             noOfCoinsUsed++;
+    //             break;
+    //         }
+
+    //     }
+
+    // }
     return noOfCoinsUsed;
 }
 
