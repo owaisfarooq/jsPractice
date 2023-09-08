@@ -26,5 +26,5 @@ function isOddHeavy(n){
             highestEvenNumber = evenNumbers[i];
         }
     }
-    return lowestOddNumber > highestEvenNumber ? true : false;
+    return lowestOddNumber > highestEvenNumber;
 }
