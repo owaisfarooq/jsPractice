@@ -14,7 +14,9 @@ function strictEqual (functionReturnedValue, expectedValue, problem = "") {
 }
 function assertEquals (functionReturnedValue, expectedValue, problem = ""){
     return getResult(functionReturnedValue === expectedValue, functionReturnedValue, expectedValue, problem)
-    
+}
+function test(functionReturnedValue, expectedValue, problem) {
+    return getResult(JSON.stringify(functionReturnedValue) === JSON.stringify(expectedValue), functionReturnedValue, expectedValue, problem)
 }
 function strictEqualArray (functionReturnedValue, expectedValue, problem) {
     return getResult(JSON.stringify(functionReturnedValue) === JSON.stringify(expectedValue), functionReturnedValue, expectedValue, problem)
@@ -26,4 +28,4 @@ function expect (functionReturnedValue, expectedValue, problem = "") {
     return getResult(functionReturnedValue === expectedValue, functionReturnedValue, expectedValue, problem)
 }
 
-module.exports = { strictEqual, strictEqualArray, assertEquals, strictEqualObjects, expect };
+module.exports = { strictEqual, strictEqualArray, assertEquals, strictEqualObjects, expect, test };
