@@ -1,26 +1,17 @@
-const chai = require('chai');
-chai.config.truncateThreshold = 0;
-const { deepEqual } = chai.assert;
+const Test = require('./functionTesting');
 
-function doTest (string, expected) {
-    const actual = permutations(string);
-	deepEqual(actual.sort(), expected.sort(), `for string "${string}"\n`);
-}
-
-doTest('a', ['a']);
-// doTest('ab', ['ab', 'ba']);
-// doTest('aabb', ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']);
+Test.doTest(permutations('a'), ['a']);
+Test.doTest(permutations('ab'), ['ab', 'ba']);
+Test.doTest(permutations('aabb'), ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']);
 
 
 function permutations(string) {
-    let unfilteredPermutations = [];
-    let stringAsArray = string.split('');
-    
-    for (let i = 0; i < stringAsArray.length; i++) {
-        const letter = stringAsArray[i];
-        chai
+    let allPermutations = [];
+    let currentString = string;
+    for (let index = 0; index < string.length; index++) {
+        const variableCharacter = string[index];
+        
     }
-    
     return ['a'];
 }
 

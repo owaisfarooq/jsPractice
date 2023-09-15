@@ -19,7 +19,7 @@ function nextBigger(n) {
     for (let i = 0; i < b.length; i++) {
         const digitBeingMoved = b[i];
         for (let innerIndex = i; innerIndex < b.length; innerIndex++) {
-            let newNumber = "";
+            let newNumber = ""; 
             let tempArr = b;
             tempArr[i] = 
             const temp = digitBeingMoved;

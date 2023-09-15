@@ -10,7 +10,9 @@ function getResult (isPassed = true, functionReturnedValue, expectedValue, probl
 
 function strictEqual (functionReturnedValue, expectedValue, problem = "") {
     return getResult(functionReturnedValue == expectedValue, functionReturnedValue, expectedValue, problem)
-
+}
+function doTest (functionReturnedValue, expectedValue, problem = ""){
+    return getResult(functionReturnedValue.sort() === expectedValue.sort(), functionReturnedValue, expectedValue, problem)
 }
 function assertEquals (functionReturnedValue, expectedValue, problem = ""){
     return getResult(functionReturnedValue === expectedValue, functionReturnedValue, expectedValue, problem)

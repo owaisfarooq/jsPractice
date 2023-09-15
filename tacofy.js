@@ -1,10 +1,11 @@
 const Test = require('./functionTesting');
 
-Test.assertEquals(tacofy(""), ['shell', 'shell'])
-Test.assertEquals(tacofy("a"), ['shell', 'beef', 'shell'])
-Test.assertEquals(tacofy("ggg"), ['shell', 'guacamole', 'guacamole', 'guacamole', 'shell'])
-Test.assertEquals(tacofy("ogl"), ['shell', 'beef', 'guacamole', 'lettuce', 'shell'])
-Test.assertEquals(tacofy("ydjkpwqrzto"), ['shell', 'tomato', 'beef', 'shell'])
+Test.assertEquals(tacofy("Alex is Super Cool"), ['shell', 'beef', 'lettuce', 'beef', 'beef', 'salsa', 'salsa', 'beef', 'beef', 'cheese', 'beef', 'beef', 'lettuce', 'shell'],)
+Test.assertEquals(tacofy("abtlcgs"), ['shell', 'beef', 'tomato', 'lettuce', 'cheese', 'guacamole', 'salsa', 'shell'])
+Test.assertEquals(tacofy("dG"), ['shell', 'guacamole', 'shell'])
+Test.assertEquals(tacofy("NftYUKkjjMUFs"), ['shell', 'tomato', 'beef', 'beef', 'salsa', 'shell'])
+Test.assertEquals(tacofy("undefinedSCEWTWmivKqtBuOU"), ['shell', 'beef', 'beef', 'beef', 'beef', 'salsa', 'cheese', 'beef', 'tomato', 'beef', 'tomato', 'beef', 'beef', 'beef', 'shell'])
+Test.assertEquals(tacofy("SsBiundefined"), ['shell', 'salsa', 'salsa', 'beef', 'beef', 'beef', 'beef', 'beef', 'shell'])
 
 function checkKey(letter) {
     switch (letter.toLowerCase()) {
