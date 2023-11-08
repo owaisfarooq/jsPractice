@@ -33,7 +33,7 @@ function to24hourtime(hour, minute, period) {
     let result = String(hour)
     if (period !== 'am') {
         result = String(hour+12);
-    }
+    }               
     if ( result.length < 2 ) {
         result += "0";
     }
