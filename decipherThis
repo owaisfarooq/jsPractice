@@ -1,4 +1,3 @@
-
 // You are given a secret message you need to decipher. Here are the things you need to know to decipher it:
 
 // For each word:
@@ -7,33 +6,24 @@
 // the first letter is replaced by its character code (e.g. H becomes 72)
 // Note: there are no special characters used, only letters and spaces
 
-const Test = require('./functionTesting');
+const assert = require('./functionTesting');
+assert.assertEquals(decipherThis('72olle 103doo 100ya'), 'Hello good day');
+assert.assertEquals(decipherThis('82yade 115te 103o'), 'Ready set go');
+assert.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 
-Test.assertEquals(decipherThis('72olle 103doo 100ya'), 'Hello good day');
-Test.assertEquals(decipherThis('82yade 115te 103o'), 'Ready set go');
-Test.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 
+const Test = require('@codewars/test-compat');
+describe("Tests", () => {
+    it("test", () => {
+        Test.assertEquals(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do'); 
+    });
+});
+  
 
-function decipherThis(str) {
-    words = str.split(' ');
-    return words.map( word => {
-        let decipheredWord = word
-        let asciiOfFirstCharacter = "";
-        
-        word.split("").forEach( letter => {
-            if (Number(letter)) {
-                asciiOfFirstCharacter += letter
-            } else {
-                return
-            }
-        });
-        decipheredWord[0] = String.fromCharCode(Number(asciiOfFirstCharacter))
-        return decipheredWord
-    }).join(" ")
-}
 
 // function decipherThis(str) {
-//     return str.split(" ").map( word => {
+//     words = str.split(' ');
+//     return words.map( word => {
 //         let decipheredWord = word
 //         let asciiOfFirstCharacter = "";
         
@@ -45,26 +35,43 @@ function decipherThis(str) {
 //             }
 //         });
 //         decipheredWord[0] = String.fromCharCode(Number(asciiOfFirstCharacter))
-
-//         if (word.length > 2) {
-//             let temp = word[1];
-//             word[1] = word[word.length -2]
-//             word[word.length -2] = temp
-//         }
-
 //         return decipheredWord
 //     }).join(" ")
 // }
 
-function cipherThis(str) {
+function decipherThis(str) {
     return str.split(" ").map( word => {
-        if (word.length > 2) {
-            let temp = word[1];
-            word[1] = word[word.length -2]
-            word[word.length -2] = temp
+        // seperaing the ASCII of the first letter from the actual string
+        let asciiOfFirstCharacter = "";
+        let actualWord = ""
+        word.split("").forEach( letter => {
+            if ( Number(letter) || Number(letter) === 0 ) {
+                asciiOfFirstCharacter += letter;
+            } else {
+                actualWord += letter;
+            }
+        });
+        // adding the actual first letter with the rest of the string
+        decipheredWord = String.fromCharCode( Number ( asciiOfFirstCharacter ) ) + actualWord;
+        decipheredWord = decipheredWord.split(""); // splitting is required for swapping values
+        // swapping second and second last letter
+        if (decipheredWord.length > 2) {
+            [decipheredWord[1], decipheredWord[decipheredWord.length - 1]] = [decipheredWord[decipheredWord.length - 1], decipheredWord[1]];
         }
-        word[0] = word.charCodeAt(0)
-        return word
+
+        return decipheredWord.join("");
+    }).join(" ")
+}
+
+function cipherThis(str) {
+    return str.split(" ").map( letter => {
+        if (letter.length > 2) {
+            let temp = letter[1];
+            letter[1] = letter[letter.length -2];
+            letter[letter.length -2] = temp;
+        }
+        letter[0] = letter.charCodeAt(0);
+        return letter;
     }).join(" ")
 }
 
